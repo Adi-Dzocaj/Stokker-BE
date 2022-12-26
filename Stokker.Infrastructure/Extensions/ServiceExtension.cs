@@ -1,11 +1,13 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
+using Stokker.Infrastructure.Context;
+
 namespace Stokker.Infrastructure.Extensions
 {
-    public class ServiceExtension
+    public static class ServiceExtension
     {
-        public ServiceExtension()
-        {
+        public static IServiceCollection AddPersistanceService(this IServiceCollection services, string connectionString ) {
+            services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(options => options.UseSqlServer(connectionstring);
         }
     }
 }
-
