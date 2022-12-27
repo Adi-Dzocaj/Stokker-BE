@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 25.0.1703.6
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stokker.WebApi", "Stokker\Stokker.WebApi.csproj", "{75A5E78B-849C-4829-A6F1-F6EEFA271F95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stokker.WebApi", "Stokker\Stokker.WebApi.csproj", "{75A5E78B-849C-4829-A6F1-F6EEFA271F95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stokker.Infrastructure", "Stokker.Infrastructure\Stokker.Infrastructure.csproj", "{FA8A5378-C8A8-405F-89DB-B24A483C1428}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stokker.Infrastructure", "Stokker.Infrastructure\Stokker.Infrastructure.csproj", "{FA8A5378-C8A8-405F-89DB-B24A483C1428}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lol", "lol", "{D5435F0C-9689-4D51-9FE5-4CDA65D16DB0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stokker.Domain", "Stokker.Domain\Stokker.Domain.csproj", "{A7383EB9-34F0-4EAE-A758-CDBC844D2CD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stokker.Domain", "Stokker.Domain\Stokker.Domain.csproj", "{A7383EB9-34F0-4EAE-A758-CDBC844D2CD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,11 +1,14 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Stokker.Domain.Entities;
+
 namespace Stokker.Infrastructure.Context
 {
-    public class IApplicationDbContext
+    public interface IApplicationDbContext
     {
-        public IApplicationDbContext()
-        {
-        }
+        DbSet<User> Users { get; }
+        DbSet<Account> Accounts { get; }
+        DbSet<Investment> Investments { get; }
     }
 }
 

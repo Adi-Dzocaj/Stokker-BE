@@ -16,7 +16,6 @@
     <None Remove="Services\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />
     <Folder Include="DTO\" />
