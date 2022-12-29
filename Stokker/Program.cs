@@ -2,13 +2,12 @@
 using Stokker.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-// Add services to the container.
 
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddPersistenceServices(connectionString);
+
 builder.Services.AddDomainServices();
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -21,10 +20,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+Console.WriteLine("Hello");
+
 app.UseHttpsRedirection();
-
+app.UseCors(a => a.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
