@@ -28,6 +28,9 @@ namespace Stokker.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<decimal>("AccountBalance")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<decimal>("UnusedFunds")
                         .HasColumnType("decimal(18,2)");
 
@@ -54,6 +57,9 @@ namespace Stokker.Infrastructure.Migrations
                     b.Property<DateTimeOffset>("PurchasedAt")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<decimal?>("SellPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("StockTicker")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -79,10 +85,6 @@ namespace Stokker.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -9,6 +9,7 @@ namespace Stokker.Domain.Entities
     public class Account
     {
         public Guid Id { get; set; }
+        public decimal AccountBalance { get; set; } = 0;
         public decimal UnusedFunds { get; set; } = 0;
         public ICollection<Investment> Investments { get; set; }
         public User User { get; set; }

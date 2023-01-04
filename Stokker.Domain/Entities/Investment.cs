@@ -12,6 +12,7 @@ namespace Stokker.Domain.Entities
         public string Title { get; set; }
         public string StockTicker { get; set; }
         public decimal BuyPrice { get; set; }
+        public decimal? SellPrice { get; set; }  
         public DateTimeOffset PurchasedAt { get; set; }
         public Account Account { get; set; }
         public Guid AccountId { get; set; }
