@@ -16,8 +16,9 @@ namespace Stokker.Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<User>().HasOne(a => a.Account).WithOne(a => a.User).HasForeignKey<Account>(b => b.UserId);
-            builder.Entity<Account>().HasOne(a => a.User).WithOne(a => a.Account).HasForeignKey<User>(b => b.AccountId);
+            builder.Entity<User>().HasOne(u => u.Account).WithOne(a => a.User).HasForeignKey<Account>(a => a.UserId);
+            builder.Entity<Account>().HasOne(a => a.User).WithOne(u => u.Account).HasForeignKey<User>(u => u.AccountId);
+            // builder.Entity<Investment>().HasOne(i => i.Account).WithMany(a => a.Investments);
 
             base.OnModelCreating(builder);
         }
