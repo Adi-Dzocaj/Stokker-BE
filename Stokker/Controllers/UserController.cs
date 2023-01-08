@@ -28,9 +28,12 @@ namespace Stokker.WebApi.Controllers
 
         }
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<List<User>>> getSpecificUser(string id)
         {
-            return "value";
+            var user = context.Users.Where(u => u.Id == id).Include(u => u.Account).ThenInclude(a => a.Investments).FirstOrDefault();
+            if (user is null)
+                return NotFound("Account not found");
+            return Ok(user);
         }
 
         [HttpPost]
