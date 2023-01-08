@@ -12,7 +12,7 @@ using Stokker.Infrastructure.Context;
 namespace Stokker.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230108143517_InitialCreate")]
+    [Migration("20230108224936_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

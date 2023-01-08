@@ -44,7 +44,7 @@ namespace Stokker.WebApi.Controllers
 
         // PUT api/<AccountController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<List<Account>>> updateAccountByUserId(string id, UpdateAccountDTO updateAccountDTO)
+        public async Task<ActionResult<List<Account>>> UpdateAccountByUserId(string id, UpdateAccountDTO updateAccountDTO)
         {
             var specificAccount = context.Accounts.Where(a => a.UserId == id).FirstOrDefault();
             if (specificAccount is null)
