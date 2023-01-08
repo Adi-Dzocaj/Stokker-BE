@@ -34,8 +34,9 @@ namespace Stokker.Infrastructure.Migrations
                     b.Property<decimal>("UnusedFunds")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -77,9 +78,8 @@ namespace Stokker.Infrastructure.Migrations
 
             modelBuilder.Entity("Stokker.Domain.Entities.User", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<Guid>("AccountId")
                         .HasColumnType("uniqueidentifier");

@@ -14,6 +14,6 @@ namespace Stokker.Domain.Entities
         public decimal UnusedFunds { get; set; } = 0;
         public ICollection<Investment> Investments { get; set; }
         public User User { get; set; }
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
     }
 }

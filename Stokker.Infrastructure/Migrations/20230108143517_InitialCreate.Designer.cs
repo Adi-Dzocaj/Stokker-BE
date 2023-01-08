@@ -12,7 +12,7 @@ using Stokker.Infrastructure.Context;
 namespace Stokker.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230105192817_InitialCreate")]
+    [Migration("20230108143517_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -37,8 +37,9 @@ namespace Stokker.Infrastructure.Migrations
                     b.Property<decimal>("UnusedFunds")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -80,9 +81,8 @@ namespace Stokker.Infrastructure.Migrations
 
             modelBuilder.Entity("Stokker.Domain.Entities.User", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<Guid>("AccountId")
                         .HasColumnType("uniqueidentifier");

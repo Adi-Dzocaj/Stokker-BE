@@ -18,7 +18,7 @@ namespace Stokker.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AccountBalance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     UnusedFunds = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -52,7 +52,7 @@ namespace Stokker.Infrastructure.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AccountId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },

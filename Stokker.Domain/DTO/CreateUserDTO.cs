@@ -8,7 +8,7 @@ namespace Stokker.Domain.DTO
 {
     public class CreateUserDTO
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Email { get; set; }
     }
 }
