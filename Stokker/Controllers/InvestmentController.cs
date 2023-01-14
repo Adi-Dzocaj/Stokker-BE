@@ -41,17 +41,26 @@ namespace Stokker.WebApi.Controllers
             {
                 Title = CreateInvestmentDTO.Title,
                 StockTicker = CreateInvestmentDTO.StockTicker,
+                AmountOfStocks = CreateInvestmentDTO.AmountOfStocks,
                 BuyPrice = CreateInvestmentDTO.BuyPrice,
                 PurchasedAt = CreateInvestmentDTO.PurchasedAt,
                 AccountId = specificAccount.Id
             };
-            await context.AddAsync(investment);
-            await context.SaveChangesAsync();
-            return Ok(investment);
+
+            if (investment.AmountOfStocks * investment.BuyPrice < specificAccount.UnusedFunds)
+            {
+                await context.AddAsync(investment);
+                await context.SaveChangesAsync();
+                return Ok(investment);
+            }
+            else
+            {
+                return new EmptyResult();
+            }
         }
 
-        // PUT api/<InvestmentController>/5
-        [HttpPut("{id}")]
+            // PUT api/<InvestmentController>/5
+            [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }

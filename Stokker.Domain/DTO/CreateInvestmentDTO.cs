@@ -11,6 +11,7 @@ namespace Stokker.Domain.DTO
     {
         public string Title { get; set; }
         public string StockTicker { get; set; }
+        public int AmountOfStocks { get; set; }
         public decimal BuyPrice { get; set; }
         public decimal? SellPrice { get; set; }
         public DateTimeOffset PurchasedAt { get; set; }
