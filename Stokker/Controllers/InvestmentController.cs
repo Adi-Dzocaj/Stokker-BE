@@ -50,6 +50,8 @@ namespace Stokker.WebApi.Controllers
             if (investment.AmountOfStocks * investment.BuyPrice < specificAccount.UnusedFunds)
             {
                 await context.AddAsync(investment);
+                // Subtract the purchase amount from the unusedFunds column in the user's account
+                specificAccount.UnusedFunds = specificAccount.UnusedFunds - investment.AmountOfStocks * investment.BuyPrice;
                 await context.SaveChangesAsync();
                 return Ok(investment);
             }
