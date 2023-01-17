@@ -42,6 +42,7 @@ namespace Stokker.WebApi.Controllers
                 Title = CreateInvestmentDTO.Title,
                 StockTicker = CreateInvestmentDTO.StockTicker,
                 AmountOfStocks = CreateInvestmentDTO.AmountOfStocks,
+                CurrentPrice = CreateInvestmentDTO.CurrentPrice,
                 BuyPrice = CreateInvestmentDTO.BuyPrice,
                 PurchasedAt = CreateInvestmentDTO.PurchasedAt,
                 AccountId = specificAccount.Id
