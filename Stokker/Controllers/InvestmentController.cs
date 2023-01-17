@@ -34,7 +34,7 @@ namespace Stokker.WebApi.Controllers
 
         // POST api/<InvestmentController>
         [HttpPost]
-        public async Task<ActionResult> AddInvestmentToUserAccount(string id, CreateInvestmentDTO CreateInvestmentDTO)
+        public async Task<ActionResult> AddInvestmentToUserAccountSubtractFromAccount(string id, CreateInvestmentDTO CreateInvestmentDTO)
         {
             var specificAccount = context.Accounts.Where(a => a.UserId == id).FirstOrDefault();
             var investment = new Investment()
@@ -69,8 +69,23 @@ namespace Stokker.WebApi.Controllers
 
         // DELETE api/<InvestmentController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> DeleteInvestmentFromUserAccountAddToAccount(Guid id)
         {
+
+            var specificInvestment = context.Investments.Where(i => i.Id == id).FirstOrDefault();
+            var accountId = context.Investments.Where(i => i.Id == id).FirstOrDefault().AccountId;
+            var specificAccount = context.Accounts.Where(a => a.Id == accountId).FirstOrDefault();
+            if (specificInvestment != null)
+            {
+                context.Investments.Remove(specificInvestment);
+                specificAccount.UnusedFunds = specificAccount.UnusedFunds + specificInvestment.AmountOfStocks * specificInvestment.BuyPrice;
+                await context.SaveChangesAsync();
+                return Ok(specificInvestment);
+            }
+            else
+            {
+                return new EmptyResult();
+            }
         }
     }
 }

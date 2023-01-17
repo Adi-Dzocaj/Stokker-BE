@@ -30,7 +30,7 @@ namespace Stokker.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<List<Account>>> getAccountByUserId(string id)
         {
-            var account = context.Accounts.Where(a => a.UserId == id).FirstOrDefault();
+            var account = context.Accounts.Where(a => a.UserId == id).Include(a => a.Investments).FirstOrDefault();
             if (account is null)
                 return NotFound("Account not found");
             return Ok(account);
