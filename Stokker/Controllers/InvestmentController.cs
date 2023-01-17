@@ -61,15 +61,9 @@ namespace Stokker.WebApi.Controllers
             }
         }
 
-            // PUT api/<InvestmentController>/5
-            [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<InvestmentController>/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteInvestmentFromUserAccountAddToAccount(Guid id)
+        // PUT api/<InvestmentController>/5
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateInvestmentFromUserAccountIncreaseUnusedFunds(Guid id, UpdateInvestmentDTO updateInvestmentDTO)
         {
 
             var specificInvestment = context.Investments.Where(i => i.Id == id).FirstOrDefault();
@@ -77,8 +71,11 @@ namespace Stokker.WebApi.Controllers
             var specificAccount = context.Accounts.Where(a => a.Id == accountId).FirstOrDefault();
             if (specificInvestment != null)
             {
-                context.Investments.Remove(specificInvestment);
-                specificAccount.UnusedFunds = specificAccount.UnusedFunds + specificInvestment.AmountOfStocks * specificInvestment.BuyPrice;
+                specificInvestment.AmountOfStocks = specificInvestment.AmountOfStocks - updateInvestmentDTO.AmountOfStocks;
+                specificAccount.UnusedFunds = specificAccount.UnusedFunds + updateInvestmentDTO.AmountOfStocks * specificInvestment.BuyPrice;
+                if (specificInvestment.AmountOfStocks == 0) {
+                    context.Investments.Remove(specificInvestment);
+                }
                 await context.SaveChangesAsync();
                 return Ok(specificInvestment);
             }
@@ -87,5 +84,26 @@ namespace Stokker.WebApi.Controllers
                 return new EmptyResult();
             }
         }
+
+        // DELETE api/<InvestmentController>/5
+        //[HttpDelete("{id}")]
+        //public async Task<ActionResult> DeleteInvestmentFromUserAccountIncreaseUnusedFunds(Guid id)
+        //{
+
+        //    var specificInvestment = context.Investments.Where(i => i.Id == id).FirstOrDefault();
+        //    var accountId = context.Investments.Where(i => i.Id == id).FirstOrDefault().AccountId;
+        //    var specificAccount = context.Accounts.Where(a => a.Id == accountId).FirstOrDefault();
+        //    if (specificInvestment != null)
+        //    {
+        //        context.Investments.Remove(specificInvestment);
+        //        specificAccount.UnusedFunds = specificAccount.UnusedFunds + specificInvestment.AmountOfStocks * specificInvestment.BuyPrice;
+        //        await context.SaveChangesAsync();
+        //        return Ok(specificInvestment);
+        //    }
+        //    else
+        //    {
+        //        return new EmptyResult();
+        //    }
+        //}
     }
 }
