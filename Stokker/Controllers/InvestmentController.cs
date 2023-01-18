@@ -74,7 +74,7 @@ namespace Stokker.WebApi.Controllers
             if (specificInvestment != null)
             {
                 specificInvestment.AmountOfStocks = specificInvestment.AmountOfStocks - updateInvestmentDTO.AmountOfStocks;
-                specificAccount.UnusedFunds = specificAccount.UnusedFunds + updateInvestmentDTO.AmountOfStocks * specificInvestment.BuyPrice;
+                specificAccount.UnusedFunds = specificAccount.UnusedFunds + updateInvestmentDTO.AmountOfStocks * specificInvestment.CurrentPrice;
                 if (specificInvestment.AmountOfStocks == 0) {
                     context.Investments.Remove(specificInvestment);
                 }
