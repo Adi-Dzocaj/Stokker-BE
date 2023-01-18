@@ -36,11 +36,6 @@ namespace Stokker.WebApi.Controllers
             return Ok(account);
         }
 
-        // POST api/<AccountController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
         // PUT api/<AccountController>/5
         [HttpPut("{id}")]
@@ -56,11 +51,26 @@ namespace Stokker.WebApi.Controllers
             await context.SaveChangesAsync();
             return Ok(specificAccount);
         }
-
-        // DELETE api/<AccountController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // PUT api/<AccountController>/5
+        [HttpPut("Investment/{id}")]
+        public async Task<ActionResult<List<Account>>> UpdateAccountFundsByUserId(string id)
         {
+            var specificAccount = context.Accounts.Where(a => a.UserId == id).FirstOrDefault();
+            var accountInvestments = context.Investments.Where(i => i.AccountId == specificAccount.Id);
+
+            if (specificAccount is null)
+                return NotFound("Account not found");
+
+            var unusedFunds = specificAccount.UnusedFunds;
+            decimal totalInvestmentsValue = 0;
+            foreach (Investment investment in accountInvestments)
+            {
+                totalInvestmentsValue += investment.CurrentPrice * investment.AmountOfStocks;
+            }
+            specificAccount.AccountBalance = totalInvestmentsValue + unusedFunds;
+
+            await context.SaveChangesAsync();
+            return Ok(specificAccount);
         }
     }
 }
