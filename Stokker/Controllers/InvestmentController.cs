@@ -70,6 +70,7 @@ namespace Stokker.WebApi.Controllers
             var specificInvestment = context.Investments.Where(i => i.Id == id).FirstOrDefault();
             var accountId = context.Investments.Where(i => i.Id == id).FirstOrDefault().AccountId;
             var specificAccount = context.Accounts.Where(a => a.Id == accountId).FirstOrDefault();
+
             if (specificInvestment != null)
             {
                 specificInvestment.AmountOfStocks = specificInvestment.AmountOfStocks - updateInvestmentDTO.AmountOfStocks;

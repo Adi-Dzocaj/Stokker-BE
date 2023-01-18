@@ -9,5 +9,6 @@ namespace Stokker.Domain.DTO
     public class UpdateInvestmentDTO
     {
         public int AmountOfStocks { get; set; }
+        public decimal CurrentPrice { get; set; }   
     }
 }
