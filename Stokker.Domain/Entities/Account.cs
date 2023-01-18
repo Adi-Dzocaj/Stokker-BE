@@ -13,6 +13,7 @@ namespace Stokker.Domain.Entities
         public decimal StartingCapital { get; set; } = 0;
         public decimal AccountBalance { get; set; } = 0;
         public decimal UnusedFunds { get; set; } = 0;
+        public DateTimeOffset CreationDate { get; set; }
         public ICollection<Investment> Investments { get; set; }
         public User User { get; set; }
         public string UserId { get; set; }

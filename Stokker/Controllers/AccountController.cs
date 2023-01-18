@@ -48,6 +48,7 @@ namespace Stokker.WebApi.Controllers
             specificAccount.StartingCapital = updateAccountDTO.StartingCapital;
             specificAccount.AccountBalance = updateAccountDTO.AccountBalance;
             specificAccount.UnusedFunds = updateAccountDTO.UnusedFunds;
+            specificAccount.CreationDate= updateAccountDTO.CreationDate;
 
             await context.SaveChangesAsync();
             return Ok(specificAccount);

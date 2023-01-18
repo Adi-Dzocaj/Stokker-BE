@@ -11,5 +11,6 @@ namespace Stokker.Domain.DTO
         public decimal StartingCapital { get; set; }
         public decimal AccountBalance { get; set; }
         public decimal UnusedFunds { get; set; }
+        public DateTimeOffset CreationDate { get; set; }
     }
 }
