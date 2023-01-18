@@ -8,6 +8,7 @@ namespace Stokker.Domain.DTO
 {
     public class UpdateAccountDTO
     {
+        public decimal StartingCapital { get; set; }
         public decimal AccountBalance { get; set; }
         public decimal UnusedFunds { get; set; }
     }

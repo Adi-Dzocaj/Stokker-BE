@@ -45,6 +45,7 @@ namespace Stokker.WebApi.Controllers
             if (specificAccount is null)
                 return NotFound("Account not found");
 
+            specificAccount.StartingCapital = updateAccountDTO.StartingCapital;
             specificAccount.AccountBalance = updateAccountDTO.AccountBalance;
             specificAccount.UnusedFunds = updateAccountDTO.UnusedFunds;
 
