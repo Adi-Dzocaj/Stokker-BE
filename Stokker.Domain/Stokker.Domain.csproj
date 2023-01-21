@@ -18,6 +18,7 @@
   <ItemGroup>
     <Folder Include="Repositories\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Services\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Alpaca.Markets" Version="6.1.7" />

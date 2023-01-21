@@ -20,8 +20,8 @@
     "Stokker.WebApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://stokkerbe.herokuapp.com/",
-      "launchUrl": "",
+      "applicationUrl": "https://stokker.azurewebsites.net",
+      "launchUrl": "api",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

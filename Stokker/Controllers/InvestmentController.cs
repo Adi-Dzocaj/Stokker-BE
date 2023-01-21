@@ -3,8 +3,6 @@ using Stokker.Domain.DTO;
 using Stokker.Domain.Entities;
 using Stokker.Infrastructure.Context;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Stokker.WebApi.Controllers
 {
     [Route("api/[controller]")]
@@ -16,20 +14,6 @@ namespace Stokker.WebApi.Controllers
         public InvestmentController(ApplicationDbContext context)
         {
             this.context = context;
-        }
-
-        // GET: api/<InvestmentController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<InvestmentController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
         }
 
         // POST api/<InvestmentController>
@@ -62,7 +46,7 @@ namespace Stokker.WebApi.Controllers
             }
         }
 
-        // PUT api/<InvestmentController>/5
+        // PUT api/<InvestmentController>/
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateInvestmentFromUserAccountIncreaseUnusedFunds(Guid id, UpdateInvestmentDTO updateInvestmentDTO)
         {
@@ -86,26 +70,5 @@ namespace Stokker.WebApi.Controllers
                 return new EmptyResult();
             }
         }
-
-        // DELETE api/<InvestmentController>/5
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult> DeleteInvestmentFromUserAccountIncreaseUnusedFunds(Guid id)
-        //{
-
-        //    var specificInvestment = context.Investments.Where(i => i.Id == id).FirstOrDefault();
-        //    var accountId = context.Investments.Where(i => i.Id == id).FirstOrDefault().AccountId;
-        //    var specificAccount = context.Accounts.Where(a => a.Id == accountId).FirstOrDefault();
-        //    if (specificInvestment != null)
-        //    {
-        //        context.Investments.Remove(specificInvestment);
-        //        specificAccount.UnusedFunds = specificAccount.UnusedFunds + specificInvestment.AmountOfStocks * specificInvestment.BuyPrice;
-        //        await context.SaveChangesAsync();
-        //        return Ok(specificInvestment);
-        //    }
-        //    else
-        //    {
-        //        return new EmptyResult();
-        //    }
-        //}
     }
 }
